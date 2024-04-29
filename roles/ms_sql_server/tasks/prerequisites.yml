@@ -1,11 +1,9 @@
 ---
 # Tasks to ensure all the requisites are met to run this role
-- name: Ensure powershell is installed
+- name: Ensure powershell is installed with chocolatey
   # Content suggestion provided by Ansible Lightspeed
-  ansible.windows.win_feature:
-    name: PowerShell-Windows-Server
-    include_management_tools: true
-    include_sub_features: true
+  chocolatey.chocolatey.win_chocolatey:
+    name: powershell
     state: present
   register: _install_powershell
 
