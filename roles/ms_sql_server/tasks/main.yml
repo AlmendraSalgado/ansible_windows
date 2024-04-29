@@ -1,0 +1,6 @@
+---
+# tasks file for ms_sql_server
+- ansible.builtin.include_tasks: prerequisites.yml
+
+
+

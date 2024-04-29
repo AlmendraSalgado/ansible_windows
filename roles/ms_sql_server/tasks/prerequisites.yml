@@ -1,0 +1,26 @@
+---
+# Tasks to ensure all the requisites are met to run this role
+- name: Ensure powershell is installed
+  # Content suggestion provided by Ansible Lightspeed
+  ansible.windows.win_feature:
+    name: PowerShell-Windows-Server
+    include_management_tools: true
+    include_sub_features: true
+    state: present
+  register: _install_powershell
+
+- name: Reboot the host if PowerShell-Windows-Server feature requires it
+  # Content suggestion provided by Ansible Lightspeed
+  ansible.windows.win_reboot:
+  when:
+    - _install_powershell is changed
+
+- name: Get package from Microsoft
+  # Content suggestion provided by Ansible Lightspeed
+  ansible.windows.win_get_url:
+    url: "{{ mssql_package_url }}"
+    dest: "{{ mssql_package_dest }}"
+  register: _ms_download
+  until: _ms_download is succeeded
+  retries: 10
+  delay: 5

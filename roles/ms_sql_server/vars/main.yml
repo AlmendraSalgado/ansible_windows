@@ -1,0 +1,4 @@
+---
+# vars file for ms_sql_server
+mssql_package_url: 'https://go.microsoft.com/fwlink/p/?linkid=2215158&clcid=0x409&culture=en-us&country=us'
+mssql_package_dest: C:\Temp\renamed-foo.conf
