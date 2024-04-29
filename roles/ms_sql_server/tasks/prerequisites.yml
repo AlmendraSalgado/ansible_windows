@@ -19,12 +19,8 @@
     path: "{{ mssql_package_dest }}"
     state: directory
 
-- name: Get package from Microsoft
+- name: Copy package to install SQL server
   # Content suggestion provided by Ansible Lightspeed
-  ansible.windows.win_get_url:
-    url: "{{ mssql_package_url }}"
+  ansible.windows.win_copy:
+    src: "{{ mssql_package_file }}"
     dest: "{{ mssql_package_dest }}"
-  register: _ms_download
-  until: _ms_download is succeeded
-  retries: 10
-  delay: 5
