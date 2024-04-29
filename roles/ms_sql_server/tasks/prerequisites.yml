@@ -13,6 +13,12 @@
   when:
     - _install_powershell is changed
 
+- name: Ensure destination folder {{ mssql_package_dest }} exists
+  # Content suggestion provided by Ansible Lightspeed
+  ansible.windows.win_file:
+    path: "{{ _path_ }}"
+    state: directory
+
 - name: Get package from Microsoft
   # Content suggestion provided by Ansible Lightspeed
   ansible.windows.win_get_url:
