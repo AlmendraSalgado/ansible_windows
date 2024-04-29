@@ -1,6 +1,6 @@
 ---
 - name: Install and configure SQL Server
-  hosts: all
+  hosts: windows
 
   roles:
     - { role: ../roles/ms_sql_server }
