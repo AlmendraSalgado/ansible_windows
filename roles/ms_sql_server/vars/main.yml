@@ -2,3 +2,5 @@
 # vars file for ms_sql_server
 mssql_package_file: 'SQL2022-SSEI-Dev.exe'
 mssql_package_dest: 'C:\Temp\SQL2022-SSEI-Dev.exe'
+ssms_package_url: 'https://aka.ms/ssmsfullsetup'
+ssms_package_dest: 'C:\Temp\ssms.exe'
