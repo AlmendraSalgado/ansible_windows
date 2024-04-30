@@ -25,9 +25,9 @@
     src: "{{ mssql_package_file }}"
     dest: "{{ mssql_package_dest }}"
 
-- name: Get ssms package to manage SQL server
-  # Content suggestion provided by Ansible Lightspeed
-  ansible.windows.win_get_url:
-    url: "{{ ssms_package_url }}"
-    dest: "{{ ssms_package_dest }}"
+# - name: Get ssms package to manage SQL server
+#   # Content suggestion provided by Ansible Lightspeed
+#   ansible.windows.win_get_url:
+#     url: "{{ ssms_package_url }}"
+#     dest: "{{ ssms_package_dest }}"
   

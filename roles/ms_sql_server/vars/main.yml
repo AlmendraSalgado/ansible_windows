@@ -2,5 +2,12 @@
 # vars file for ms_sql_server
 mssql_package_file: 'SQL2022-SSEI-Dev.exe'
 mssql_package_dest: 'C:\Temp\SQL2022-SSEI-Dev.exe'
-ssms_package_url: 'https://aka.ms/ssmsfullsetup'
-ssms_package_dest: 'C:\Temp\ssms.exe'
+# ssms_package_url: 'https://aka.ms/ssmsfullsetup'
+# ssms_package_dest: 'C:\Temp\ssms.exe'
+mssql_configuration_file_name: 'ConfigurationFile.ini'
+mssql_configuration_file_dest: 'C:\Temp\"{{ mssql_instance_name }}"'
+
+mssql_state: Install
+mssql_instance_name: MSSQLSERVER
+mssql_instance_id: MSSQLSERVER
+mssql_accept_microsoft_sql_server_standard_eula: True

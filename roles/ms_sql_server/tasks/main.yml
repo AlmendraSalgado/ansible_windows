@@ -2,5 +2,22 @@
 # tasks file for ms_sql_server
 - ansible.builtin.include_tasks: prerequisites.yml
 
+- name: Create Configuration file from template
+  ansible.builtin.template:
+    template : "{{ mssql_configuration_file_name }}.j2"
+    dest: "{{ mssql_configuration_file_dest }}"
+
+- name: Run installation command to install sql server on windows
+  ansible.windows.win_command: "{{ mssql_package_dest }} /ConfigurationFile={{ mssql_configuration_file_dest }}"
+  register: _install_sqlserver
+
+- name: Debug previous variable
+  # Content suggestion provided by Ansible Lightspeed
+  ansible.builtin.debug:
+    var: _install_sqlserver
+
+
+
+
 
 
