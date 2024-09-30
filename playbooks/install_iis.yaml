@@ -51,6 +51,7 @@
       ansible.windows.win_copy:
         content: "{{ iis_test_message }}"
         dest: '{{ item.path }}\index.html'
+      with_items: "{{ iis_sites }}"
 
     - name: Show website addresses
       ansible.builtin.debug:
