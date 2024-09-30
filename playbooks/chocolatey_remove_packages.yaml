@@ -1,0 +1,27 @@
+---
+- name: Remove packages using Chocolatey
+  hosts: all
+  vars:
+    choco_packages:
+      - name: nodejs
+      - name: python
+  
+  tasks:
+    - name: Remove packages sequentially
+      chocolatey.chocolatey.win_chocolatey:
+        name: "{{ item.name }}"
+        state: absent
+      loop: "{{ choco_packages }}"
+
+    - name: Check python version
+      ansible.windows.win_command: python --version
+      register: check_python_version
+      ignore_errors: true
+
+    - name: Check nodejs version
+      ansible.windows.win_command: node --version
+      register: check_node_version
+      ignore_errors: true
+
+    - ansible.builtin.debug:
+        msg: Python Version is {{ check_python_version.stdout_lines[0] }} and NodeJS version is {{ check_node_version.stdout_lines[0] }}
