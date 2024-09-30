@@ -50,7 +50,7 @@
     - name: Create website index.html
       ansible.windows.win_copy:
         content: "{{ iis_test_message }}"
-        dest: C:\Inetpub\wwwroot\index.html
+        dest: '{{ item.path }}\index.html'
 
     - name: Show website addresses
       ansible.builtin.debug:

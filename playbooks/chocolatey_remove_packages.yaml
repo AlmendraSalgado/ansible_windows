@@ -10,6 +10,7 @@
     - name: Remove packages sequentially
       chocolatey.chocolatey.win_chocolatey:
         name: "{{ item.name }}"
+        remove_dependencies: true
         state: absent
       loop: "{{ choco_packages }}"
 
