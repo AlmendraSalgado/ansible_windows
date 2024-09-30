@@ -1,0 +1,19 @@
+---
+- name: Remove the iis web service
+  hosts: all
+
+  tasks:
+    - name: Stop iis service
+      ansible.windows.win_service:
+        name: W3Svc
+        state: stopped
+
+    - name: Remove iis
+      ansible.windows.win_feature:
+        name: Web-Server
+        state: absent
+
+    - name: Remove website index.html
+      ansible.windows.win_file:
+        path: C:\Inetpub\wwwroot\index.html
+        state: absent
