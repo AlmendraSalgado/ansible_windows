@@ -4,7 +4,7 @@
   tasks:
     - name: Check for all the security, critical, and rollup updates in the windows servers
       ansible.windows.win_updates:
-        category_names: '*'
+        category_names: "{{ category_names }}"
         # category_names:
         #   - SecurityUpdates
         #   - CriticalUpdates
